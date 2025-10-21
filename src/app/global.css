@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  /* Greyscale */
+  --color-grey-100: #f9fafb;
+  --color-grey-200: #f3f4f6;
+  --color-grey-300: #e5e7eb;
+  --color-grey-400: #d1d5db;
+  --color-grey-500: #6b7280;
+  --color-grey-600: #4b5563;
+  --color-grey-700: #374151;
+  --color-grey-800: #1f2937;
+  --color-grey-900: #111827;
+
+  /* Primary Blues */
+  --color-primary-100: #f2f6fe;
+  --color-primary-200: #e0eafd;
+  --color-primary-300: #bed1fb;
+  --color-primary-400: #5383e9;
+  --color-primary-500: #3449b5;
+  --color-primary-600: #274092;
+
+  /* Success Greens */
+  --color-success-100: #f0fdf4;
+  --color-success-200: #dcfce7;
+  --color-success-300: #a7f3d0;
+  --color-success-400: #22c55e;
+  --color-success-500: #16a34a;
+
+  /* Warning Yellows */
+  --color-warning-100: #fff7ed;
+  --color-warning-200: #feedd3;
+  --color-warning-300: #fbbf24;
+  --color-warning-400: #f59e42;
+  --color-warning-500: #b45309;
+
+  /* Error Reds */
+  --color-error-100: #fef2f2;
+  --color-error-200: #fee2e2;
+  --color-error-300: #fca5a5;
+  --color-error-400: #dc2626;
+  --color-error-500: #991b1b;
+
+  /* Accent Purple */
+  --color-accent-100: #f5f3ff;
+  --color-accent-200: #ede9fe;
+  --color-accent-300: #a78bfa;
+  --color-accent-400: #7c3aed;
+  --color-accent-500: #5b21b6;
+}
+
+
+
+@layer base {
+  body {
+    background-color: var(--color-grey-200);
+    background-image:
+      radial-gradient(1000px 600px at 0% 0%, var(--color-primary-100) 0%, transparent 60%),
+      radial-gradient(800px 500px at 100% 0%, var(--color-accent-100) 0%, transparent 60%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
+  }
+  .animation-delay-300 { animation-delay: 0.3s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+}
