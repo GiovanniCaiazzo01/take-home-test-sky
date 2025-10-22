@@ -1,23 +1,20 @@
-import { ListAlbumAction } from "@THTS/actions/albums.actions";
-import { Text } from "@THTS/UI/components";
-import { ChipStatus } from "@THTS/UI/components/Chip";
+import { AlbumEntry } from "@THTS/types/album/albumEntry";
+import Button from "@THTS/UI/components/Button/Button";
+import ChipStatus from "@THTS/UI/components/Chip/Chip";
+import { Text } from "@THTS/UI/components/Text";
 import Image from "next/image";
 import Link from "next/link";
 
-const AlbumList = async () => {
-  const response = await ListAlbumAction();
-  if (!response.success)
-    return (
-      <div className="p-8 text-center text-red-600">Error loading albums</div>
-    );
+type AlbumListGridProps = {
+  albums: AlbumEntry[]
+}
 
-  const albumsEntry = response.data.feed.entry;
-
+const AlbumListGrid = ({ albums }: AlbumListGridProps) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {albumsEntry.map((album) => {
-        const coverImage =
-          album["im:image"][album["im:image"].length - 1].label;
+      {albums.map((album) => {
+        const albumImageLen = album["im:image"].length - 1
+        const coverImage = album["im:image"][albumImageLen].label;
         const albumName = album["im:name"].label;
         const artistName = album["im:artist"].label;
         const price = album["im:price"].label;
@@ -30,7 +27,7 @@ const AlbumList = async () => {
           day: "numeric",
         });
         const albumLink = album.link?.attributes?.href;
-        const albumId = album["id"].attributes["im:id"];
+        const albumId = album.id.attributes["im:id"];
 
         return (
           <div
@@ -51,15 +48,11 @@ const AlbumList = async () => {
                   {albumName}
                 </Text>
                 <Text variant="caption" className="text-grey-600">
-                  {artistName}
-                </Text>
+                  {artistName} </Text>
                 <Text variant="caption" className="text-grey-700">
                   {releaseDate}
                 </Text>
-                <Text
-                  variant="body-md"
-                  className="font-medium text-primary-600"
-                >
+                <Text variant="body-md" className="font-medium text-primary-600">
                   {price}
                 </Text>
               </div>
@@ -67,14 +60,15 @@ const AlbumList = async () => {
 
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
               <ChipStatus label={genre} variant="info" className="w-fit" />
+              <Button> 
               <Link
-                href={albumLink}
+                href={albumLink || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-2 text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-1 px-3 rounded transition-colors duration-200"
               >
                 Ascolta su Apple Music
               </Link>
+              </Button>
             </div>
           </div>
         );
@@ -83,4 +77,4 @@ const AlbumList = async () => {
   );
 };
 
-export default AlbumList;
+export default AlbumListGrid

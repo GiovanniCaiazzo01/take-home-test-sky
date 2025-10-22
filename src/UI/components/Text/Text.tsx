@@ -1,5 +1,3 @@
-"use client";
-
 import {
   StyledBaseText,
   StyledDisplayXL,
@@ -17,21 +15,7 @@ import {
 } from "./Text.styled";
 
 import { ComponentPropsWithoutRef, ElementType } from "react";
-
-export type TextVariant =
-  | "base"
-  | "display-xl"
-  | "display-lg"
-  | "display-md"
-  | "display-sm"
-  | "title-lg"
-  | "title-md"
-  | "title-sm"
-  | "body-lg"
-  | "body-md"
-  | "body-sm"
-  | "caption"
-  | "label";
+import { TextVariant } from "./types";
 
 export interface TextProps extends ComponentPropsWithoutRef<"div"> {
   variant?: TextVariant;

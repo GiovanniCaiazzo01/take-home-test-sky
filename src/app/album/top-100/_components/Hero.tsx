@@ -1,11 +1,15 @@
-import { Text } from "@THTS/UI/components";
-import Image from "next/image";
+"use client"
+
+import Button from "@THTS/UI/components/Button/Button"
+import { Text } from "@THTS/UI/components/Text"
+import Image from "next/image"
 
 export default function Hero() {
   return (
     <section
       className="
-        relative w-full rounded-2xl overflow-hidden sm:aspect-2/1 lg:aspect-4/1 bg--grey-200 flex items-center"
+        relative w-full rounded-2xl overflow-hidden sm:aspect-2/1 lg:aspect-4/1
+        bg-grey-200 flex items-center"
     >
       <Image
         src="/images/hero.webp"
@@ -17,7 +21,7 @@ export default function Hero() {
         draggable={false}
       />
       <div className="absolute inset-0 bg-black/65" />
-      <div className="relative z-10 space-y-4 p-4 sm:p-8 w-full max-w-2xl text-white">
+      <div className="relative z-10 space-y-6 p-4 sm:p-8 w-full max-w-2xl text-white">
         <div className="opacity-0 animate-fade-in-up animation-delay-300">
           <Text variant="display-lg">Top 100 Albums of the Year</Text>
         </div>
@@ -27,7 +31,15 @@ export default function Hero() {
             the soundtracks that defined the year.
           </Text>
         </div>
+        <div className="mt-4 flex flex-wrap gap-4 opacity-0 animate-fade-in-up animation-delay-900">
+          <Button variant="default" size="md">
+            Explore Albums
+          </Button>
+          <Button variant="success" size="md">
+            Listen Now
+          </Button>
+        </div>
       </div>
     </section>
-  );
+  )
 }

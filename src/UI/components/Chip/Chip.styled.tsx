@@ -1,16 +1,7 @@
+"use client"
+
 import styled from "styled-components";
-import { ReactNode } from "react";
-
-type ChipVariant = "success" | "warning" | "error" | "info" | "neutral";
-type ChipSize = "sm" | "md" | "lg";
-
-export interface ChipStatusProps {
-  variant?: ChipVariant;
-  size?: ChipSize;
-  label: string;
-  icon?: ReactNode;
-  className?: string;
-}
+import { ChipSize, ChipVariant } from "./types";
 
 export const StyledChip = styled.div<{
   $variant: ChipVariant;
