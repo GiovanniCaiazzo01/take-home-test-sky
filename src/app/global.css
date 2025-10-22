@@ -49,8 +49,6 @@
   --color-accent-500: #5b21b6;
 }
 
-
-
 @layer base {
   body {
     background-color: var(--color-grey-200);

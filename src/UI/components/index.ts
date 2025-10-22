@@ -1,1 +1,1 @@
-export * from "./Text/Text.styled"
+export { default as Text}  from "./Text"
