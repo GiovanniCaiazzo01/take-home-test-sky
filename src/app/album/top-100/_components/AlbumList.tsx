@@ -22,7 +22,7 @@ export default async function Home() {
         const price = album["im:price"].label;
         const genre = album.category?.attributes?.label;
         const releaseRaw = album["im:releaseDate"].label;
-        // Data formattata
+
         const releaseDate = new Date(releaseRaw).toLocaleDateString("it-IT", {
           year: "numeric",
           month: "short",
@@ -34,9 +34,8 @@ export default async function Home() {
         return (
           <div
             key={albumId}
-            className="w-full p-4 bg-white sm:bg-red-500 md:bg-green-500 lg:bg-blue-400 rounded-lg shadow-md grid grid-cols-1 gap-6 items-center"
+            className="w-full p-4 bg-white rounded-lg shadow-md grid grid-cols-1 gap-6 items-center"
           >
-            {/* Prima cella: Cover + titolo/artista */}
             <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-x-4">
               <div className="relative min-w-16 max-w-16 min-h-16 max-h-16 rounded-md overflow-hidden bg-accent-200">
                 <Image
@@ -50,15 +49,14 @@ export default async function Home() {
               <Text variant="body-md" className="font-semibold text-grey-900">
                   {albumName}
               </Text>
-                <Text variant="caption" className="text-grey-600">{artistName}</Text>
+              <Text variant="caption" className="text-grey-600">{artistName}</Text>
               <Text variant="caption" className="text-grey-700">{releaseDate}</Text>
+              <Text variant="body-md" className="font-medium text-primary-600">{price}</Text>
               </div>
             </div>
 
-            {/* Seconda cella: Genre, Release, Price + Link */}
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
             <ChipStatus label={genre}  variant="info" className="w-fit" />
-              <Text variant="body-md" className="font-medium text-primary-600">{price}</Text>
               <Link
                 href={albumLink}
                 target="_blank"
