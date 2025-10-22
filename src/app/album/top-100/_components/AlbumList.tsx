@@ -4,7 +4,7 @@ import { ChipStatus } from "@THTS/UI/components/Chip";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Home() {
+const AlbumList = async () => {
   const response = await ListAlbumAction();
   if (!response.success)
     return (
@@ -81,4 +81,6 @@ export default async function Home() {
       })}
     </div>
   );
-}
+};
+
+export default AlbumList;

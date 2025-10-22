@@ -1,6 +1,5 @@
 const config = {
-  plugins: ["@tailwindcss/postcss", "prettier-plugin-tailwindcss"],
-  tailwindStylesheet: "./app/globals.css",
+  plugins: ["@tailwindcss/postcss"],
 };
 
 export default config;
