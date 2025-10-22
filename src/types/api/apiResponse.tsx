@@ -5,7 +5,8 @@ export type SuccessType<P = undefined> = P extends undefined
 export type ErrorType<T = Record<string, string>> = {
   success: false;
   error: {
-    message?: string; description?: string;
+    message?: string;
+    description?: string;
     fieldErrors?: T;
   };
-}
+};

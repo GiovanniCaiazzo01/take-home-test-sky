@@ -1,7 +1,5 @@
-import { TitleLG } from "@THTS/UI/components";
+import { Text } from "@THTS/UI/components";
 
 export default function Home() {
-  return (
-    <TitleLG>Test Title</TitleLG>
-  );
+  return <Text variant="title-lg">Test Title</Text>;
 }

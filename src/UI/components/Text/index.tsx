@@ -54,12 +54,7 @@ const variantMap: Record<TextVariant, any> = {
   label: StyledLabel,
 };
 
-const Text = ({
-  variant = "base",
-  as,
-  children,
-  ...rest
-}: TextProps) => {
+const Text = ({ variant = "base", as, children, ...rest }: TextProps) => {
   const Component = variantMap[variant];
   return (
     <Component as={as} {...rest}>
@@ -68,4 +63,4 @@ const Text = ({
   );
 };
 
-export default Text
+export default Text;

@@ -1,88 +1,88 @@
-import { Label } from "./common"
+import { Label } from "./common";
 
 type ImageAttributes = {
-  height: string
-}
+  height: string;
+};
 
 type AlbumEntryImage = {
-  label: string, 
-  attributes: ImageAttributes
-}
+  label: string;
+  attributes: ImageAttributes;
+};
 
 type PriceAttributes = {
-  amount: string
-  currency: string
-}
+  amount: string;
+  currency: string;
+};
 
 type AlbumEntryPrice = {
-  label: string 
-  attributes: PriceAttributes
-}
+  label: string;
+  attributes: PriceAttributes;
+};
 
 type ContentTypeAttributes = {
-  term: string
-  label: string
-}
+  term: string;
+  label: string;
+};
 
 type AlbumEntryContentType = {
-  "im:contentType": ContentTypeAttributes
-}
+  "im:contentType": ContentTypeAttributes;
+};
 
 type LinkAttributes = {
-  rel: string,
-  type: string,
-  href: string
-} 
+  rel: string;
+  type: string;
+  href: string;
+};
 
 type AlbumEntryLink = {
-  attributes: LinkAttributes
-}
+  attributes: LinkAttributes;
+};
 
-type IdAttributes ={
-  "im:id": string
-}
+type IdAttributes = {
+  "im:id": string;
+};
 
 type AlbumEntryID = {
-  label: string
-  attributes: IdAttributes
-}
+  label: string;
+  attributes: IdAttributes;
+};
 
 type ArtistAttributes = {
-    href: string
-}
+  href: string;
+};
 
 type AlbumEntryArtist = {
-  label: string
-  attributes: ArtistAttributes
-}
+  label: string;
+  attributes: ArtistAttributes;
+};
 
 type CategoryAttributes = {
-  "im:id": string,
-  "term": string,
-  "scheme": string,
-  "label": string
-}
+  "im:id": string;
+  term: string;
+  scheme: string;
+  label: string;
+};
 
 type AlbumEntryCategory = {
-  "attributes": CategoryAttributes
-}
+  attributes: CategoryAttributes;
+};
 
 type AlbumEntryReleaseDate = {
-  "label": string,
-  "attributes": Label 
-}
+  label: string;
+  attributes: Label;
+};
 
 export type AlbumEntry = {
-  "im:name": Label,
-  "im:image": AlbumEntryImage[],
-  "im:itemCount": Label,
-  "im:price": AlbumEntryPrice,
-  "im:contentType": AlbumEntryContentType,
-  "rights": Label,
-  "title": Label,
-  "link": AlbumEntryLink,
-  "id": AlbumEntryID,
-  "im:artist": AlbumEntryArtist,
-  "category": AlbumEntryCategory,
-  "im:releaseDate": AlbumEntryReleaseDate
-}
+  "im:name": Label;
+  "im:image": AlbumEntryImage[];
+  "im:itemCount": Label;
+  "im:price": AlbumEntryPrice;
+  "im:contentType": AlbumEntryContentType;
+  rights: Label;
+  title: Label;
+  link: AlbumEntryLink;
+  id: AlbumEntryID;
+  "im:artist": AlbumEntryArtist;
+  category: AlbumEntryCategory;
+  "im:releaseDate": AlbumEntryReleaseDate;
+};

@@ -16,7 +16,8 @@ export default async function Home() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {albumsEntry.map((album) => {
-        const coverImage = album["im:image"][album["im:image"].length - 1].label;
+        const coverImage =
+          album["im:image"][album["im:image"].length - 1].label;
         const albumName = album["im:name"].label;
         const artistName = album["im:artist"].label;
         const price = album["im:price"].label;
@@ -34,7 +35,7 @@ export default async function Home() {
         return (
           <div
             key={albumId}
-            className="w-full p-4 bg-white rounded-lg shadow-md grid grid-cols-1 gap-6 items-center"
+            className="w-full bg-white p-4 rounded-lg shadow-md grid grid-cols-1 gap-6 items-center"
           >
             <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-x-4">
               <div className="relative min-w-16 max-w-16 min-h-16 max-h-16 rounded-md overflow-hidden bg-accent-200">
@@ -46,17 +47,26 @@ export default async function Home() {
                 />
               </div>
               <div className="flex flex-col">
-              <Text variant="body-md" className="font-semibold text-grey-900">
+                <Text variant="body-md" className="font-semibold text-grey-900">
                   {albumName}
-              </Text>
-              <Text variant="caption" className="text-grey-600">{artistName}</Text>
-              <Text variant="caption" className="text-grey-700">{releaseDate}</Text>
-              <Text variant="body-md" className="font-medium text-primary-600">{price}</Text>
+                </Text>
+                <Text variant="caption" className="text-grey-600">
+                  {artistName}
+                </Text>
+                <Text variant="caption" className="text-grey-700">
+                  {releaseDate}
+                </Text>
+                <Text
+                  variant="body-md"
+                  className="font-medium text-primary-600"
+                >
+                  {price}
+                </Text>
               </div>
             </div>
 
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
-            <ChipStatus label={genre}  variant="info" className="w-fit" />
+              <ChipStatus label={genre} variant="info" className="w-fit" />
               <Link
                 href={albumLink}
                 target="_blank"

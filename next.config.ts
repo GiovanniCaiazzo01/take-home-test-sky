@@ -2,11 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [
-      'is1-ssl.mzstatic.com',
-    ],
+    domains: ["is1-ssl.mzstatic.com"],
   },
-
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;

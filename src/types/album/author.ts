@@ -1,8 +1,8 @@
-type AuthorLabel =  {
-  label: string
-}
+type AuthorLabel = {
+  label: string;
+};
 
 export type Author = {
-  name: AuthorLabel
-  uri: AuthorLabel 
-}
+  name: AuthorLabel;
+  uri: AuthorLabel;
+};

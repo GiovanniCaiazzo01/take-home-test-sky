@@ -12,7 +12,10 @@ export interface ChipStatusProps {
   className?: string;
 }
 
-export const StyledChip = styled.div<{ $variant: ChipVariant; $size: ChipSize }>`
+export const StyledChip = styled.div<{
+  $variant: ChipVariant;
+  $size: ChipSize;
+}>`
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
@@ -21,7 +24,9 @@ export const StyledChip = styled.div<{ $variant: ChipVariant; $size: ChipSize }>
   transition: all 0.2s ease;
 
   &:hover {
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 
   /* Variant styles */
@@ -95,4 +100,3 @@ export const IconWrapper = styled.span`
 export const Label = styled.span`
   font-weight: 600;
 `;
-
