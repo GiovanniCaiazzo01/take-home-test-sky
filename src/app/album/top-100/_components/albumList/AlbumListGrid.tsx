@@ -24,23 +24,30 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
   const [year] = useQueryState("year", filterParsers.year);
   const [artist] = useQueryState("artist", filterParsers.artist);
 
-  const filteredAlbums = filterAlbum({
-    albums: initialAlbums,
-    query: { search, genre, year, artist },
-  });
-
   const dispatch = useAppDispatch();
   const favorites = useAppSelector((state) => state.favorites.items);
 
-  const isFavorited = (album: AlbumEntry) =>
+  const isFavorites = (album: AlbumEntry) =>
     favorites.some(
       (item) => item.id.attributes["im:id"] === album.id.attributes["im:id"],
     );
 
+
+  const showFavorite = useAppSelector(
+    (state) => state.favorites.showFavorite
+  );
+
+
+  console.log({showFavorite})
+  const filteredAlbums = filterAlbum({
+    albums:  showFavorite ? favorites : initialAlbums,
+    query: { search, genre, year, artist },
+  });
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {filteredAlbums.map((album) => {
-        const favorited = isFavorited(album);
+        const favorited = isFavorites(album);
         const albumImageLen = album["im:image"].length - 1;
         const coverImage = album["im:image"][albumImageLen].label;
         const albumName = album["im:name"].label;
@@ -60,14 +67,15 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
         return (
           <div
             key={albumId}
-            className="w-full bg-white p-4 rounded-lg shadow-md grid grid-cols-1 gap-6 items-center"
+            className="w-full bg-white p-4 rounded-lg shadow-md grid grid-cols-1 gap-6 items-center bg-linear-to-r from-primary-100 to-warning-100 "
           >
-            <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-x-4">
-              <div className="relative min-w-16 max-w-16 min-h-16 max-h-16 rounded-md overflow-hidden bg-accent-200">
-                <Image
+            <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4">
+              <div className="relative sm:min-w-28 sm:min-h-28 sm:max-w-28 sm:max-h-28 rounded-md overflow-hidden"> 
+              <Image
                   src={coverImage}
                   alt={`${albumName} cover`}
-                  fill
+                  height={112}
+                  width={112}
                   className="object-cover"
                 />
               </div>
@@ -105,9 +113,9 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
               <Heart
                 onClick={() => dispatch(toggleFavorite(album))}
                 aria-label={
-                  favorited ? "Add to favorite" : "Remove from favorite"
+                   favorited ? "Remove from favorite" : "Add to favorite"
                 }
-                className={cx("stroke-primary-500", {
+                className={cx("stroke-primary-500 cursor-pointer transition-all hover:scale-110", {
                   "fill-primary-300": favorited,
                 })}
               />

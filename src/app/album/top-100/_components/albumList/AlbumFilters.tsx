@@ -3,9 +3,13 @@
 import { useTransition } from "react";
 import { useQueryState } from "nuqs";
 import { filterParsers } from "../../_data/albumSearchParams";
+import AlbumFavoritesToggle from "./AlbumFavoritesToggle";
+import { useAppDispatch, useAppSelector } from "@THTS/store/hooks";
+import { toggleShowFavorite } from "@THTS/store/features/favorites/favoritesSlice";
 
 export default function AlbumFilters() {
   const [isPending, startTransition] = useTransition();
+  const dispatch = useAppDispatch()
 
   const [search, setSearch] = useQueryState(
     "search",
@@ -17,6 +21,7 @@ export default function AlbumFilters() {
     }),
   );
 
+
   const [artist, setArtist] = useQueryState(
     "artist",
     filterParsers.artist.withOptions({
@@ -27,7 +32,15 @@ export default function AlbumFilters() {
     }),
   );
 
-  const searchIcon = (
+   const showFavorite = useAppSelector(
+    (state) => state.favorites.showFavorite
+  );
+
+  const onToggleShowFavorite = () => {
+    dispatch(toggleShowFavorite())
+  }
+
+    const searchIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -61,9 +74,10 @@ export default function AlbumFilters() {
 
   return (
     <section
-      className="flex flex-col md:flex-row gap-1 md:gap-4"
+      className="flex flex-col md:flex-row gap-1 md:justify-between md:gap-4"
       data-pending={isPending ? "" : undefined}
     >
+    <div className="flex flex-col md:flex-row gap-1 md:gap-4">
       <div className="relative flex items-center h-12">
         <span
           className="absolute left-4 text-grey-400 pointer-events-none"
@@ -113,6 +127,9 @@ export default function AlbumFilters() {
           aria-busy={isPending}
         />
       </div>
+    </div>
+
+    <AlbumFavoritesToggle checked={showFavorite} onChange={onToggleShowFavorite}/>
     </section>
   );
 }

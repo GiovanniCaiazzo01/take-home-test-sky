@@ -3,18 +3,24 @@
 import styled from "styled-components";
 import { ButtonVariant, ButtonSize } from "./types";
 
-export const StyledButton = styled.button<{
-  $variant: ButtonVariant;
-  $size: ButtonSize;
-}>`
+export const BaseButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+  padding: 0;
+`;
+
+export const StyledButton = styled(BaseButton)<{
+  $variant: ButtonVariant;
+  $size: ButtonSize;
+}>`
   border-radius: 0.375rem;
   border-width: 1px;
   font-weight: 500;
-  transition: all 0.2s ease;
-  cursor: pointer;
 
   &:hover {
     box-shadow:
