@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import styled from "styled-components";
 import { ChipSize, ChipVariant } from "./types";

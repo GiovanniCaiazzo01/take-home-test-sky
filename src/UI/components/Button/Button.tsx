@@ -1,14 +1,13 @@
-
-import React, { ButtonHTMLAttributes, ReactNode } from "react"
-import { StyledButton } from "./Button.styled"
-import { ButtonSize, ButtonVariant } from "./types"
+import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import { StyledButton } from "./Button.styled";
+import { ButtonSize, ButtonVariant } from "./types";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant
-  size?: ButtonSize
-  icon?: ReactNode
-  children: ReactNode
-  className?: string
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  icon?: ReactNode;
+  children: ReactNode;
+  className?: string;
 }
 
 const Button = ({
@@ -25,8 +24,9 @@ const Button = ({
       className={className}
       {...rest}
     >
-      {children} </StyledButton>
-  )
-}
+      {children}{" "}
+    </StyledButton>
+  );
+};
 
-export default Button
+export default Button;

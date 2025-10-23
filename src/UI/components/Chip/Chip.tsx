@@ -11,7 +11,6 @@ export interface ChipStatusProps {
   className?: string;
 }
 
-
 const ChipStatus = ({
   variant = "neutral",
   size = "md",
@@ -27,4 +26,4 @@ const ChipStatus = ({
   );
 };
 
-export default ChipStatus 
+export default ChipStatus;

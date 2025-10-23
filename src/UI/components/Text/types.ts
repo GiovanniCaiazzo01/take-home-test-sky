@@ -16,4 +16,3 @@ export type TextVariant =
 export interface TextStyledProps {
   className?: string;
 }
-
