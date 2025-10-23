@@ -6,7 +6,6 @@ import AlbumFilters from "./_components/albumList/AlbumFilters";
 import AlbumList from "./_components/albumList/AlbumList";
 
 export default async function Top100Album() {
-
     return (
     <div className="flex flex-col gap-y-5">
       <Hero />

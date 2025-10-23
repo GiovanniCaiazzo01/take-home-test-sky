@@ -1,5 +1,4 @@
 "use client"
-
 import { AlbumEntry } from "@THTS/types/album/albumEntry";
 import Button from "@THTS/UI/components/Button/Button";
 import ChipStatus from "@THTS/UI/components/Chip/Chip";
