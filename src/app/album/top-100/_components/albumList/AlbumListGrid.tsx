@@ -9,6 +9,8 @@ import Link from "next/link";
 import { useQueryState } from "nuqs";
 import { filterParsers } from "../../_data/albumSearchParams";
 import { filterAlbum } from "./utils";
+import { useAppDispatch, useAppSelector } from "@THTS/store/hooks";
+import { toggleFavorite } from "@THTS/store/features/favorites/favoritesSlice";
 
 type AlbumListGridProps = {
   initialAlbums: AlbumEntry[];
@@ -25,9 +27,17 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
     query: { search, genre, year, artist },
   });
 
+
+ const dispatch = useAppDispatch();
+  const favorites = useAppSelector(state => state.favorites.items);
+
+  const isFavorited = (album: AlbumEntry) =>
+    favorites.some(item => item.id.attributes["im:id"] === album.id.attributes["im:id"]);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {filteredAlbums.map((album) => {
+        const favorited = isFavorited(album)
         const albumImageLen = album["im:image"].length - 1;
         const coverImage = album["im:image"][albumImageLen].label;
         const albumName = album["im:name"].label;
@@ -49,6 +59,27 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
             key={albumId}
             className="w-full bg-white p-4 rounded-lg shadow-md grid grid-cols-1 gap-6 items-center"
           >
+
+
+                
+
+
+<div key={album.id.attributes["im:id"]} className="relative bg-white p-4 shadow">
+            <img src={album["im:image"][2].label} alt={album.title.label} className="w-full h-auto" />
+            <h3 className="mt-2 font-semibold">{album["im:name"].label}</h3>
+            <p className="text-sm text-gray-600">{album["im:artist"].label}</p>
+            <button
+              aria-label={favorited ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
+              className="absolute top-2 right-2 text-red-500"
+              onClick={() => dispatch(toggleFavorite(album))}
+            >
+              {favorited ? <div> favorito bro</div> : <div>  non favorito </div> }
+            </button>
+          </div>
+
+
+
+
             <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-x-4">
               <div className="relative min-w-16 max-w-16 min-h-16 max-h-16 rounded-md overflow-hidden bg-accent-200">
                 <Image
