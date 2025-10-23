@@ -11,6 +11,8 @@ import { filterParsers } from "../../_data/albumSearchParams";
 import { filterAlbum } from "./utils";
 import { useAppDispatch, useAppSelector } from "@THTS/store/hooks";
 import { toggleFavorite } from "@THTS/store/features/favorites/favoritesSlice";
+import { Heart } from "lucide-react";
+import cx from "classnames";
 
 type AlbumListGridProps = {
   initialAlbums: AlbumEntry[];
@@ -99,13 +101,16 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
                   Ascolta su Apple Music
                 </Link>
               </Button>
-<Button
-              aria-label={
-                favorited ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"
-              }
-              onClick={() => dispatch(toggleFavorite(album))}
-            >
-              {favorited ? "fav" :  "non fav" } </Button>
+
+              <Heart
+                onClick={() => dispatch(toggleFavorite(album))}
+                aria-label={
+                  favorited ? "Add to favorite" : "Remove from favorite"
+                }
+                className={cx("stroke-primary-500", {
+                  "fill-primary-300": favorited,
+                })}
+              />
             </div>
           </div>
         );
