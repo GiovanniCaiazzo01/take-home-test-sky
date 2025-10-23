@@ -1,18 +1,35 @@
+"use client"
+
 import { AlbumEntry } from "@THTS/types/album/albumEntry";
 import Button from "@THTS/UI/components/Button/Button";
 import ChipStatus from "@THTS/UI/components/Chip/Chip";
 import { Text } from "@THTS/UI/components/Text";
 import Image from "next/image";
 import Link from "next/link";
+import { useQueryState } from "nuqs";
+import { filterParsers } from "../../_data/albumSearchParams";
+import { filterAlbum } from "../../utils";
 
 type AlbumListGridProps = {
  initialAlbums: AlbumEntry[];
 };
 
 const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
+
+
+  const [search] = useQueryState("search", filterParsers.search);
+  const [genre] = useQueryState("genre", filterParsers.genre);
+  const [year] = useQueryState("year", filterParsers.year);
+  const [artist] = useQueryState("artist", filterParsers.artist);
+
+  const filteredAlbums = filterAlbum({
+    albums: initialAlbums,
+    query: { search, genre, year, artist },
+  });
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {initialAlbums.map((album) => {
+      {filteredAlbums.map((album) => {
         const albumImageLen = album["im:image"].length - 1;
         const coverImage = album["im:image"][albumImageLen].label;
         const albumName = album["im:name"].label;

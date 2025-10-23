@@ -3,19 +3,11 @@ import Hero from "./_components/Hero";
 import AlbumListGridSkeleton from "./_components/albumList/AlbumListGridSkeleton";
 import { Text } from "@THTS/UI/components/Text";
 import AlbumFilters from "./_components/albumList/AlbumFilters";
-import { ListAlbumAction } from "@THTS/actions/albums.actions";
 import AlbumList from "./_components/albumList/AlbumList";
-
 
 export default async function Top100Album() {
 
-  const response = await ListAlbumAction();
-  if (!response?.success) {
-    return <div className="p-8 text-center text-red-600">Error loading albums</div>;
-  }
-
-  const  initialAlbums = response.data.feed.entry
-  return (
+    return (
     <div className="flex flex-col gap-y-5">
       <Hero />
       <section className="p-6">
@@ -26,7 +18,7 @@ export default async function Top100Album() {
           <AlbumFilters />
         </div>
         <Suspense fallback={<AlbumListGridSkeleton />}>
-          <AlbumList initialAlbums={initialAlbums} />
+          <AlbumList/>
         </Suspense>
       </section>
     </div>
