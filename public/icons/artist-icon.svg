@@ -1,0 +1,14 @@
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M14 10h-2m0 0H9m3 0a3 3 0 11-6 0 3 3 0 016 0zM9 19c-3.314 0-6 1.343-6 3v1h12v-1c0-1.657-2.686-3-6-3z"
+      />
+    </svg>

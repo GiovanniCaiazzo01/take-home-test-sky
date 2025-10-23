@@ -10,3 +10,4 @@ const AlbumFiltersWrapper = () => {
 };
 
 export default AlbumFiltersWrapper;
+
