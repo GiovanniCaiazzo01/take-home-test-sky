@@ -3,7 +3,6 @@ import Hero from "./_components/Hero";
 import AlbumListGridSkeleton from "./_components/albumList/AlbumListGridSkeleton";
 import { Text } from "@THTS/UI/components/Text";
 import AlbumList from "./_components/albumList/AlbumList";
-import AlbumFiltersWrapper from "./_components/albumList/AlbumFiltersWrapper";
 
 export default async function Top100Album() {
   return (
@@ -12,7 +11,6 @@ export default async function Top100Album() {
       <section className="p-6">
         <div className="flex justify-between items-center w-full pb-4">
           <Text variant="title-lg">Top 100 Albums</Text>
-          <AlbumFiltersWrapper />
         </div>
         <Suspense fallback={<AlbumListGridSkeleton />}>
           <AlbumList />

@@ -2,6 +2,7 @@
 
 import { ListAlbumAction } from "@THTS/actions/albums.actions";
 import AlbumListGrid from "./AlbumListGrid";
+import AlbumFiltersWrapper from "./AlbumFiltersWrapper";
 
 const AlbumList = async () => {
   const response = await ListAlbumAction();
@@ -13,7 +14,12 @@ const AlbumList = async () => {
 
   const initialAlbums = response.data.feed.entry;
 
-  return <AlbumListGrid initialAlbums={initialAlbums} />;
+  return (
+    <>
+      <AlbumFiltersWrapper />
+      <AlbumListGrid initialAlbums={initialAlbums} />
+    </>
+  );
 };
 
 export default AlbumList;

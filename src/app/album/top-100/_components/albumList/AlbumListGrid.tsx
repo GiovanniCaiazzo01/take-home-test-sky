@@ -1,4 +1,5 @@
 "use client";
+
 import { AlbumEntry } from "@THTS/types/album/albumEntry";
 import Button from "@THTS/UI/components/Button/Button";
 import ChipStatus from "@THTS/UI/components/Chip/Chip";
@@ -6,10 +7,8 @@ import { Text } from "@THTS/UI/components/Text";
 import Image from "next/image";
 import Link from "next/link";
 import { useQueryState } from "nuqs";
-import {
-  filterParsers,
-} from "../../_data/albumSearchParams";
-import { filterAlbum } from "../../utils";
+import { filterParsers } from "../../_data/albumSearchParams";
+import { filterAlbum } from "./utils";
 
 type AlbumListGridProps = {
   initialAlbums: AlbumEntry[];

@@ -56,7 +56,7 @@ type AlbumEntryArtist = {
   attributes: ArtistAttributes;
 };
 
-type CategoryAttributes = {
+export type CategoryAttributes = {
   "im:id": string;
   term: string;
   scheme: string;
