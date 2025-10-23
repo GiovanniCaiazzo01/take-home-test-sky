@@ -60,7 +60,10 @@ export default function AlbumFilters() {
   );
 
   return (
-    <section className="flex flex-col md:flex-row gap-1 md:gap-4" data-pending={isPending ? "" : undefined}>
+    <section
+      className="flex flex-col md:flex-row gap-1 md:gap-4"
+      data-pending={isPending ? "" : undefined}
+    >
       <div className="relative flex items-center h-12">
         <span
           className="absolute left-4 text-grey-400 pointer-events-none"

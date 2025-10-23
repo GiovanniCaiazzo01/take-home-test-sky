@@ -9,6 +9,8 @@ import Link from "next/link";
 import { useQueryState } from "nuqs";
 import { filterParsers } from "../../_data/albumSearchParams";
 import { filterAlbum } from "./utils";
+import { useAppDispatch, useAppSelector } from "@THTS/store/hooks";
+import { toggleFavorite } from "@THTS/store/features/favorites/favoritesSlice";
 
 type AlbumListGridProps = {
   initialAlbums: AlbumEntry[];
@@ -25,9 +27,18 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
     query: { search, genre, year, artist },
   });
 
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector((state) => state.favorites.items);
+
+  const isFavorited = (album: AlbumEntry) =>
+    favorites.some(
+      (item) => item.id.attributes["im:id"] === album.id.attributes["im:id"],
+    );
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {filteredAlbums.map((album) => {
+        const favorited = isFavorited(album);
         const albumImageLen = album["im:image"].length - 1;
         const coverImage = album["im:image"][albumImageLen].label;
         const albumName = album["im:name"].label;
@@ -88,6 +99,13 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
                   Ascolta su Apple Music
                 </Link>
               </Button>
+<Button
+              aria-label={
+                favorited ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"
+              }
+              onClick={() => dispatch(toggleFavorite(album))}
+            >
+              {favorited ? "fav" :  "non fav" } </Button>
             </div>
           </div>
         );
