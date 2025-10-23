@@ -9,7 +9,13 @@ export const ListAlbumAction = async (): Promise<
   SuccessType<AlbumFeed> | ErrorType
 > => {
   try {
-    const res = await fetch(ENDPOINT, { method: "GET" });
+    const res = await fetch(ENDPOINT, {
+      method: "GET",
+      next: {
+        revalidate: 3600,
+        tags: ["top-100-albums"],
+      },
+    });
 
     if (!res.ok) {
       return {
