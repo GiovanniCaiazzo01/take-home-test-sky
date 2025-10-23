@@ -12,7 +12,7 @@ const AlbumFavoritesToggle = ({
   checked, onChange, className
 }: AlbumFavoritesToggleProps) => {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 mb-2 sm:m-0">
       <ToggleSwitch
         checked={checked}
         onChange={onChange}
