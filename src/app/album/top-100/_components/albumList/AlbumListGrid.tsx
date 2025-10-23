@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { AlbumEntry } from "@THTS/types/album/albumEntry";
 import Button from "@THTS/UI/components/Button/Button";
 import ChipStatus from "@THTS/UI/components/Chip/Chip";
@@ -6,16 +6,16 @@ import { Text } from "@THTS/UI/components/Text";
 import Image from "next/image";
 import Link from "next/link";
 import { useQueryState } from "nuqs";
-import { filterParsers } from "../../_data/albumSearchParams";
+import {
+  filterParsers,
+} from "../../_data/albumSearchParams";
 import { filterAlbum } from "../../utils";
 
 type AlbumListGridProps = {
- initialAlbums: AlbumEntry[];
+  initialAlbums: AlbumEntry[];
 };
 
 const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
-
-
   const [search] = useQueryState("search", filterParsers.search);
   const [genre] = useQueryState("genre", filterParsers.genre);
   const [year] = useQueryState("year", filterParsers.year);

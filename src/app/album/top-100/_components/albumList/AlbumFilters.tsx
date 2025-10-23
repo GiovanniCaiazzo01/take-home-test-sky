@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import { useTransition } from 'react';
-import { useQueryState } from 'nuqs';
-import { filterParsers } from '../../_data/albumSearchParams';
+import { useTransition } from "react";
+import { useQueryState } from "nuqs";
+import { filterParsers } from "../../_data/albumSearchParams";
 
 export default function AlbumFilters() {
   const [isPending, startTransition] = useTransition();
 
   const [search, setSearch] = useQueryState(
-    'search',
+    "search",
     filterParsers.search.withOptions({
       startTransition,
       clearOnDefault: true,
-      throttleMs: 250,     
-      history: 'replace',  
-    })
+      throttleMs: 250,
+      history: "replace",
+    }),
   );
 
   return (
     <section
       className="flex max-w-[480px] flex-col animate-fade-in-up"
-      data-pending={isPending ? '' : undefined}
+      data-pending={isPending ? "" : undefined}
     >
       <div className="relative flex items-center h-12">
         <span
@@ -34,17 +34,23 @@ export default function AlbumFilters() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
           </svg>
         </span>
 
-        <label htmlFor="album-search" className="sr-only">Cerca album</label>
+        <label htmlFor="album-search" className="sr-only">
+          Cerca album
+        </label>
         <input
           id="album-search"
           type="search"
           placeholder="Search…"
-          value={search}                     
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full rounded-full bg-grey-100 py-3 pl-12 pr-12 text-lg text-grey-700 outline-none ring-1 ring-grey-300 focus:ring-2 focus:ring-primary-400 transition duration-200"
           autoComplete="off"
@@ -56,7 +62,7 @@ export default function AlbumFilters() {
         {search && (
           <button
             type="button"
-            onClick={() => setSearch('')}
+            onClick={() => setSearch("")}
             className="absolute right-3 px-2 text-grey-500 hover:text-grey-700"
             aria-label="Pulisci ricerca"
           >

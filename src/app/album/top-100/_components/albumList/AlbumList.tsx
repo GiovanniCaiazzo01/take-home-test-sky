@@ -1,19 +1,19 @@
-"use server"
+"use server";
 
 import { ListAlbumAction } from "@THTS/actions/albums.actions";
 import AlbumListGrid from "./AlbumListGrid";
+
 const AlbumList = async () => {
-const response = await ListAlbumAction();
+  const response = await ListAlbumAction();
   if (!response?.success) {
-    return <div className="p-8 text-center text-red-600">Error loading albums</div>;
+    return (
+      <div className="p-8 text-center text-red-600">Error loading albums</div>
+    );
   }
 
-  const initialAlbums = response.data.feed.entry
+  const initialAlbums = response.data.feed.entry;
 
-  return (
-    <AlbumListGrid initialAlbums={initialAlbums} />
-  );
+  return <AlbumListGrid initialAlbums={initialAlbums} />;
 };
 
 export default AlbumList;
-
