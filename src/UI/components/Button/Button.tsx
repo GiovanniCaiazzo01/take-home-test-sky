@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { StyledButton } from "./Button.styled";
 import { ButtonSize, ButtonVariant } from "./types";
 
