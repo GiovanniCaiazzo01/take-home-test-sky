@@ -1,8 +1,6 @@
-"use client"
-
-import Button from "@THTS/UI/components/Button/Button"
-import { Text } from "@THTS/UI/components/Text"
-import Image from "next/image"
+import Button from "@THTS/UI/components/Button/Button";
+import { Text } from "@THTS/UI/components/Text";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -41,5 +39,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

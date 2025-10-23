@@ -6,14 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 type AlbumListGridProps = {
-  albums: AlbumEntry[]
-}
+ initialAlbums: AlbumEntry[];
+};
 
-const AlbumListGrid = ({ albums }: AlbumListGridProps) => {
+const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {albums.map((album) => {
-        const albumImageLen = album["im:image"].length - 1
+      {initialAlbums.map((album) => {
+        const albumImageLen = album["im:image"].length - 1;
         const coverImage = album["im:image"][albumImageLen].label;
         const albumName = album["im:name"].label;
         const artistName = album["im:artist"].label;
@@ -48,11 +48,15 @@ const AlbumListGrid = ({ albums }: AlbumListGridProps) => {
                   {albumName}
                 </Text>
                 <Text variant="caption" className="text-grey-600">
-                  {artistName} </Text>
+                  {artistName}{" "}
+                </Text>
                 <Text variant="caption" className="text-grey-700">
                   {releaseDate}
                 </Text>
-                <Text variant="body-md" className="font-medium text-primary-600">
+                <Text
+                  variant="body-md"
+                  className="font-medium text-primary-600"
+                >
                   {price}
                 </Text>
               </div>
@@ -60,14 +64,14 @@ const AlbumListGrid = ({ albums }: AlbumListGridProps) => {
 
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
               <ChipStatus label={genre} variant="info" className="w-fit" />
-              <Button> 
-              <Link
-                href={albumLink || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ascolta su Apple Music
-              </Link>
+              <Button>
+                <Link
+                  href={albumLink || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ascolta su Apple Music
+                </Link>
               </Button>
             </div>
           </div>
@@ -77,4 +81,4 @@ const AlbumListGrid = ({ albums }: AlbumListGridProps) => {
   );
 };
 
-export default AlbumListGrid
+export default AlbumListGrid;

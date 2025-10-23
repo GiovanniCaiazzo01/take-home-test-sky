@@ -1,16 +1,26 @@
-import { ListAlbumAction } from "@THTS/actions/albums.actions";
+"use client";
+
+import { AlbumEntry } from "@THTS/types/album/albumEntry";
 import AlbumListGrid from "./AlbumListGrid";
+import { useQueryState } from "nuqs";
+import { filterParsers } from "../../_data/albumSearchParams";
+import { filterAlbum } from "../../utils";
 
-const AlbumList = async () => {
-  const response = await ListAlbumAction();
+type AlbumListProps = {
+  initialAlbums: AlbumEntry[];
+};
 
-  if (!response.success)
-    return (
-      <div className="p-8 text-center text-red-600">Error loading albums</div>
-    );
+const AlbumList = ({ initialAlbums }: AlbumListProps) => {
+  const [search] = useQueryState("search", filterParsers.search);
 
-  const albumsEntry = response.data.feed.entry;
-  return <AlbumListGrid albums={albumsEntry} />;
+  const filteredAlbums = filterAlbum({
+    albums: initialAlbums,
+    query: { search }, 
+  });
+
+return (
+    <AlbumListGrid initialAlbums={filteredAlbums} />
+  );
 };
 
 export default AlbumList;
