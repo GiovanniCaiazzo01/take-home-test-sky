@@ -14,7 +14,9 @@ export default async function Top100Album() {
           <Text variant="title-lg">
             Top 100 Albums
           </Text>
+        <Suspense fallback={<div>loading filters</div>}>
           <AlbumFilters />
+        </Suspense>
         </div>
         <Suspense fallback={<AlbumListGridSkeleton />}>
           <AlbumList/>
