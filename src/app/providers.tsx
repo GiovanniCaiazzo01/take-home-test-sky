@@ -6,7 +6,9 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "@THTS/store";
 
-interface ProvidersProps { children: ReactNode }
+interface ProvidersProps {
+  children: ReactNode;
+}
 
 export default function Providers({ children }: ProvidersProps) {
   return (

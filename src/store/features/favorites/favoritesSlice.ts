@@ -1,18 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"; 
-import { FavoritesState }  from "./types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { FavoritesState } from "./types";
 import { AlbumEntry } from "@THTS/types/album/albumEntry";
 
 const initialState: FavoritesState = {
-  items: []
-} 
+  items: [],
+};
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
     toggleFavorite: (state, action: PayloadAction<AlbumEntry>) => {
-      const exists = state.items.find(item => item.id.attributes["im:id"] === action.payload.id.attributes["im:id"]);
+      const exists = state.items.find(
+        (item) =>
+          item.id.attributes["im:id"] === action.payload.id.attributes["im:id"],
+      );
       if (exists) {
-        state.items = state.items.filter(item => item.id.attributes["im:id"] !== action.payload.id.attributes["im:id"]);
+        state.items = state.items.filter(
+          (item) =>
+            item.id.attributes["im:id"] !==
+            action.payload.id.attributes["im:id"],
+        );
       } else {
         state.items.push(action.payload);
       }

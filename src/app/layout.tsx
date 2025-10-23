@@ -31,10 +31,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} lg:p-12 md:p-8 sm:p-6 p-3 antialiased`}
       >
         <NuqsAdapter>
-          <Providers>
-            {children}
-          </Providers>
-          </NuqsAdapter>
+          <Providers>{children}</Providers>
+        </NuqsAdapter>
       </body>
     </html>
   );

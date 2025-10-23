@@ -11,4 +11,3 @@ export const ListAlbumActionCache = unstable_cache(
     tags: ["top-100-albums"],
   },
 );
-
