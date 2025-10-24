@@ -68,6 +68,11 @@
   }
 }
 
+ /* fallback flex */
+.albums-grid {
+  display: flex; flex-wrap: wrap; gap: 1.5rem
+}
+
 @layer utilities {
   @keyframes fade-in-up {
     from {

@@ -40,7 +40,7 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
   });
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="albums-grid grid grid-cols-1 lg:grid-cols-2 gap-6">
       {filteredAlbums.map((album) => {
         const favorited = isFavorites(album);
         const albumImageLen = album["im:image"].length - 1;
