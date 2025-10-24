@@ -21,7 +21,7 @@ export const ListAlbumAction = async (): Promise<
       return {
         success: false,
         error: {
-          message: `HTTP error: ${res.status} ${res.statusText}`,
+          message: `Failed to load albums. Please try again later`,
         },
       };
     }
