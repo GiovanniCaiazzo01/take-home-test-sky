@@ -9,7 +9,7 @@ import { toggleShowFavorite } from "@THTS/store/features/favorites/favoritesSlic
 
 export default function AlbumFilters() {
   const [isPending, startTransition] = useTransition();
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const [search, setSearch] = useQueryState(
     "search",
@@ -21,7 +21,6 @@ export default function AlbumFilters() {
     }),
   );
 
-
   const [artist, setArtist] = useQueryState(
     "artist",
     filterParsers.artist.withOptions({
@@ -32,15 +31,13 @@ export default function AlbumFilters() {
     }),
   );
 
-   const showFavorite = useAppSelector(
-    (state) => state.favorites.showFavorite
-  );
+  const showFavorite = useAppSelector((state) => state.favorites.showFavorite);
 
   const onToggleShowFavorite = () => {
-    dispatch(toggleShowFavorite())
-  }
+    dispatch(toggleShowFavorite());
+  };
 
-    const searchIcon = (
+  const searchIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -77,59 +74,62 @@ export default function AlbumFilters() {
       className="flex flex-col md:flex-row gap-1 md:justify-between md:gap-4"
       data-pending={isPending ? "" : undefined}
     >
-    <div className="flex flex-col md:flex-row gap-1 md:gap-4">
-      <div className="relative flex items-center h-12">
-        <span
-          className="absolute left-4 text-grey-400 pointer-events-none"
-          aria-hidden="true"
-        >
-          {searchIcon}
-        </span>
+      <div className="flex flex-col md:flex-row gap-1 md:gap-4">
+        <div className="relative flex items-center h-12">
+          <span
+            className="absolute left-4 text-grey-400 pointer-events-none"
+            aria-hidden="true"
+          >
+            {searchIcon}
+          </span>
 
-        <label htmlFor="album-search" className="sr-only">
-          Search album
-        </label>
-        <input
-          id="album-search"
-          type="search"
-          placeholder="Search album…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-full bg-grey-100 py-1 pl-12 pr-12 text-lg text-grey-700 outline-none ring-1 ring-grey-300 focus:ring-2 focus:ring-primary-400 transition duration-200"
-          autoComplete="off"
-          inputMode="search"
-          enterKeyHint="search"
-          aria-busy={isPending}
-        />
+          <label htmlFor="album-search" className="sr-only">
+            Search album
+          </label>
+          <input
+            id="album-search"
+            type="search"
+            placeholder="Search album…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full rounded-full bg-grey-100 py-1 pl-12 pr-12 text-lg text-grey-700 outline-none ring-1 ring-grey-300 focus:ring-2 focus:ring-primary-400 transition duration-200"
+            autoComplete="off"
+            inputMode="search"
+            enterKeyHint="search"
+            aria-busy={isPending}
+          />
+        </div>
+
+        <div className="relative flex items-center h-12">
+          <span
+            className="absolute left-4 text-grey-400 pointer-events-none"
+            aria-hidden="true"
+          >
+            {artistIcon}
+          </span>
+
+          <label htmlFor="album-search" className="sr-only">
+            Search artist
+          </label>
+          <input
+            id="artist-search"
+            type="search"
+            placeholder="Search artist…"
+            value={artist}
+            onChange={(e) => setArtist(e.target.value)}
+            className="w-full rounded-full bg-grey-100 py-1 pl-12 pr-12 text-lg text-grey-700 outline-none ring-1 ring-grey-300 focus:ring-2 focus:ring-primary-400 transition duration-200"
+            autoComplete="off"
+            inputMode="search"
+            enterKeyHint="search"
+            aria-busy={isPending}
+          />
+        </div>
       </div>
 
-      <div className="relative flex items-center h-12">
-        <span
-          className="absolute left-4 text-grey-400 pointer-events-none"
-          aria-hidden="true"
-        >
-          {artistIcon}
-        </span>
-
-        <label htmlFor="album-search" className="sr-only">
-          Search artist
-        </label>
-        <input
-          id="artist-search"
-          type="search"
-          placeholder="Search artist…"
-          value={artist}
-          onChange={(e) => setArtist(e.target.value)}
-          className="w-full rounded-full bg-grey-100 py-1 pl-12 pr-12 text-lg text-grey-700 outline-none ring-1 ring-grey-300 focus:ring-2 focus:ring-primary-400 transition duration-200"
-          autoComplete="off"
-          inputMode="search"
-          enterKeyHint="search"
-          aria-busy={isPending}
-        />
-      </div>
-    </div>
-
-    <AlbumFavoritesToggle checked={showFavorite} onChange={onToggleShowFavorite}/>
+      <AlbumFavoritesToggle
+        checked={showFavorite}
+        onChange={onToggleShowFavorite}
+      />
     </section>
   );
 }

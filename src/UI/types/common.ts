@@ -1,1 +1,6 @@
-export type ComponentVariant  = "success" | "warning" | "error" | "info" | "neutral";
+export type ComponentVariant =
+  | "success"
+  | "warning"
+  | "error"
+  | "info"
+  | "neutral";

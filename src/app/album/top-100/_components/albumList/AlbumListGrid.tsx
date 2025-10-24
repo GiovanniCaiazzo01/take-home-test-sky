@@ -32,12 +32,10 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
       (item) => item.id.attributes["im:id"] === album.id.attributes["im:id"],
     );
 
-  const showFavorite = useAppSelector(
-    (state) => state.favorites.showFavorite
-  );
+  const showFavorite = useAppSelector((state) => state.favorites.showFavorite);
 
   const filteredAlbums = filterAlbum({
-    albums:  showFavorite ? favorites : initialAlbums,
+    albums: showFavorite ? favorites : initialAlbums,
     query: { search, genre, year, artist },
   });
 
@@ -67,8 +65,8 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
             className="w-full bg-white p-4 rounded-lg shadow-md grid grid-cols-1 gap-6 items-center bg-linear-to-r from-primary-100 to-warning-100 "
           >
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4">
-              <div className="relative sm:min-w-28 sm:min-h-28 sm:max-w-28 sm:max-h-28 rounded-md overflow-hidden"> 
-              <Image
+              <div className="relative sm:min-w-28 sm:min-h-28 sm:max-w-28 sm:max-h-28 rounded-md overflow-hidden">
+                <Image
                   src={coverImage}
                   alt={`${albumName} cover`}
                   height={112}
@@ -97,24 +95,25 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
 
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
               <ChipStatus label={genre} variant="info" className="w-fit" />
-              <Button>
-                <Link
-                  href={albumLink || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ascolta su Apple Music
-                </Link>
-              </Button>
+              <Link
+                href={albumLink || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button>Ascolta su Apple Music</Button>
+              </Link>
 
               <Heart
                 onClick={() => dispatch(toggleFavorite(album))}
                 aria-label={
-                   favorited ? "Remove from favorite" : "Add to favorite"
+                  favorited ? "Remove from favorite" : "Add to favorite"
                 }
-                className={cx("stroke-primary-500 cursor-pointer transition-all hover:scale-110", {
-                  "fill-primary-300": favorited,
-                })}
+                className={cx(
+                  "stroke-primary-500 cursor-pointer transition-all hover:scale-110",
+                  {
+                    "fill-primary-300": favorited,
+                  },
+                )}
               />
             </div>
           </div>
