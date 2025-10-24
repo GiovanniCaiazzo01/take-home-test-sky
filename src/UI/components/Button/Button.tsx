@@ -1,12 +1,13 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import { StyledButton } from "./Button.styled";
-import { ButtonSize, ButtonVariant } from "./types";
+import { ButtonSize } from "./types";
+import { ComponentVariant } from "@THTS/UI/types/common";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
+  children: ReactNode;
+  variant?: Omit<ComponentVariant, "info">;
   size?: ButtonSize;
   icon?: ReactNode;
-  children: ReactNode;
   className?: string;
 }
 
