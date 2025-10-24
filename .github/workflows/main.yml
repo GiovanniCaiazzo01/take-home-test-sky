@@ -1,50 +1,30 @@
-name: E2E
+name: CI
+
 on:
   push:
-    branches: [main, develop, feat/**]
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
 
 jobs:
-  cypress-run:
+  build-and-test:
     runs-on: ubuntu-latest
-    env:
-      NEXT_TELEMETRY_DISABLED: '1'
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
-
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
+          cache: 'npm'
 
       - name: Install deps
-        run: pnpm install --frozen-lockfile=false
+        run: npm install
 
-      # Con dynamic rendering non farà fetch a build-time.
       - name: Build app
-        run: pnpm build
+        run: npm run build
 
-      - name: Run Cypress E2E
-        uses: cypress-io/github-action@v6
-        with:
-          start: pnpm start -- -p 3000
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120000
-          browser: chrome
-        env:
-          # La pagina SSR userà la route mock della tua app Next
-          ITUNES_ENDPOINT: http://localhost:3000/api/mock/itunes
-          CYPRESS_BASE_URL: http://localhost:3000
-
-      - name: Upload Cypress Artifacts (on failure)
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-artifacts
-          path: |
-            cypress/screenshots
-            cypress/videos
+      - name: Run Cypress tests
+        run: npx cypress run
