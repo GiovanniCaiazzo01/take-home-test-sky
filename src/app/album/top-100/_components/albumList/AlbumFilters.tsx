@@ -83,7 +83,7 @@ export default function AlbumFilters() {
             {searchIcon}
           </span>
 
-          <label htmlFor="album-search" className="sr-only">
+          <label id="album-search" htmlFor="album-search" className="sr-only">
             Search album
           </label>
           <input
@@ -108,7 +108,7 @@ export default function AlbumFilters() {
             {artistIcon}
           </span>
 
-          <label htmlFor="album-search" className="sr-only">
+          <label id="artist-search" htmlFor="artist-search" className="sr-only">
             Search artist
           </label>
           <input
