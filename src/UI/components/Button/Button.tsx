@@ -12,7 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = ({
-  variant = "default",
+  variant = "neutral",
   size = "md",
   children,
   className = "",
@@ -25,7 +25,7 @@ const Button = ({
       className={className}
       {...rest}
     >
-      {children}{" "}
+      {children}
     </StyledButton>
   );
 };
