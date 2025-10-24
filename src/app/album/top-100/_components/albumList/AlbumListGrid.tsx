@@ -32,13 +32,10 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
       (item) => item.id.attributes["im:id"] === album.id.attributes["im:id"],
     );
 
-
   const showFavorite = useAppSelector(
     (state) => state.favorites.showFavorite
   );
 
-
-  console.log({showFavorite})
   const filteredAlbums = filterAlbum({
     albums:  showFavorite ? favorites : initialAlbums,
     query: { search, genre, year, artist },
