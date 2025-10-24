@@ -33,4 +33,3 @@ const favoritesSlice = createSlice({
 
 export const { toggleFavorite, toggleShowFavorite } = favoritesSlice.actions;
 export default favoritesSlice.reducer;
-

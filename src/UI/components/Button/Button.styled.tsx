@@ -1,7 +1,8 @@
 "use client";
 
 import styled from "styled-components";
-import { ButtonVariant, ButtonSize } from "./types";
+import { ButtonSize } from "./types";
+import { ComponentVariant } from "@THTS/UI/types/common";
 
 export const BaseButton = styled.button`
   display: inline-flex;
@@ -15,7 +16,7 @@ export const BaseButton = styled.button`
 `;
 
 export const StyledButton = styled(BaseButton)<{
-  $variant: ButtonVariant;
+  $variant: Omit<ComponentVariant, "info">;
   $size: ButtonSize;
 }>`
   border-radius: 0.375rem;
@@ -61,7 +62,7 @@ export const StyledButton = styled(BaseButton)<{
             border-color: var(--color-error-400);
           }
         `;
-      case "default":
+      case "neutral":
       default:
         return `
           background-color: var(--color-primary-500);

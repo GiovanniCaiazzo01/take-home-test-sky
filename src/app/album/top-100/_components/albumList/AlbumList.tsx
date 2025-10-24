@@ -6,7 +6,7 @@ import { ListAlbumActionCache } from "@THTS/actions/albums.actions.cache";
 
 const AlbumList = async () => {
   const response = await ListAlbumActionCache();
-  if (!response?.success) {
+  if (!response.success) {
     return (
       <div className="p-8 text-center text-red-600">Error loading albums</div>
     );

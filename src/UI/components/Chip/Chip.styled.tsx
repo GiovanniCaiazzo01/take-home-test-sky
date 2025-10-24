@@ -1,10 +1,11 @@
 "use client";
 
 import styled from "styled-components";
-import { ChipSize, ChipVariant } from "./types";
+import { ChipSize } from "./types";
+import { ComponentVariant } from "@THTS/UI/types/common";
 
 export const StyledChip = styled.div<{
-  $variant: ChipVariant;
+  $variant: ComponentVariant;
   $size: ChipSize;
 }>`
   display: inline-flex;

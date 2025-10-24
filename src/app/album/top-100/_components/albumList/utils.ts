@@ -1,12 +1,8 @@
 import { AlbumEntry } from "@THTS/types/album/albumEntry";
+import { FilterParsers } from "../../_data/albumSearchParams";
 
 type FilterAlbumProps = {
-  query: {
-    search: string;
-    genre: string[];
-    artist: string;
-    year: string;
-  };
+  query:  FilterParsers
   albums: AlbumEntry[];
 };
 

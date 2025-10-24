@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
 import { IconWrapper, StyledChip } from "./Chip.styled";
-import { ChipSize, ChipVariant } from "./types";
+import { ChipSize } from "./types";
 import { Text } from "../Text";
+import { ComponentVariant } from "@THTS/UI/types/common";
 
 export interface ChipStatusProps {
   label: string;
-  variant?: ChipVariant;
+  variant?: ComponentVariant;
   size?: ChipSize;
   icon?: ReactNode;
   className?: string;
