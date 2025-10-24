@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "@THTS/store/hooks";
 import { toggleFavorite } from "@THTS/store/features/favorites/favoritesSlice";
 import { Heart } from "lucide-react";
 import cx from "classnames";
+import AlbumEmptyResult from "./AlbumEmptyResult";
 
 type AlbumListGridProps = {
   initialAlbums: AlbumEntry[];
@@ -38,6 +39,15 @@ const AlbumListGrid = ({ initialAlbums }: AlbumListGridProps) => {
     albums: showFavorite ? favorites : initialAlbums,
     query: { search, genre, year, artist },
   });
+
+  if (!filteredAlbums || filteredAlbums.length <= 0) {
+    const title = "No albums found";
+    const subTitle = showFavorite
+      ? "Add your first album to get started"
+      : "Try adjusting your filters or search terms";
+
+    return <AlbumEmptyResult title={title} subTitle={subTitle} />;
+  }
 
   return (
     <div className="albums-grid grid grid-cols-1 lg:grid-cols-2 gap-6">
