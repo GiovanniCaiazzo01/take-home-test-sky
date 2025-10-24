@@ -4,14 +4,14 @@ import { AlbumEntry } from "@THTS/types/album/albumEntry";
 
 const initialState: FavoritesState = {
   items: [],
-  showFavorite: false 
+  showFavorite: false,
 };
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
     toggleShowFavorite: (state) => {
-      state.showFavorite = !state.showFavorite
+      state.showFavorite = !state.showFavorite;
     },
     toggleFavorite: (state, action: PayloadAction<AlbumEntry>) => {
       const exists = state.items.find(

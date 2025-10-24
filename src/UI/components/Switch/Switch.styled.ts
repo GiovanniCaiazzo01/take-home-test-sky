@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled, { css } from "styled-components";
 import { BaseButton } from "../Button/Button.styled";
 
 export const SwitchButton = styled(BaseButton)<{ $on: boolean }>`
@@ -10,8 +10,12 @@ export const SwitchButton = styled(BaseButton)<{ $on: boolean }>`
 
   ${({ $on }) =>
     $on
-      ? css`background-color: var(--color-primary-400);`
-      : css`background-color: var(--color-grey-400);`}
+      ? css`
+          background-color: var(--color-primary-400);
+        `
+      : css`
+          background-color: var(--color-grey-400);
+        `}
 
   &:focus {
     outline: 2px solid var(--color-primary-400);
@@ -32,7 +36,10 @@ export const Thumb = styled.span<{ $on: boolean }>`
 
   ${({ $on }) =>
     $on
-      ? css`transform: translateX(1.25rem);`
-      : css`transform: translateX(0);`}
+      ? css`
+          transform: translateX(1.25rem);
+        `
+      : css`
+          transform: translateX(0);
+        `}
 `;
-

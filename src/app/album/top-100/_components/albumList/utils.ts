@@ -2,7 +2,7 @@ import { AlbumEntry } from "@THTS/types/album/albumEntry";
 import { FilterParsers } from "../../_data/albumSearchParams";
 
 type FilterAlbumProps = {
-  query:  FilterParsers
+  query: FilterParsers;
   albums: AlbumEntry[];
 };
 

@@ -8,12 +8,12 @@ export default async function Top100Album() {
   return (
     <div className="flex flex-col gap-y-5">
       <Hero />
-        <div className="flex justify-between items-center w-full pb-4">
-          <Text variant="title-lg">Top 100 Albums</Text>
-        </div>
-        <Suspense fallback={<AlbumListGridSkeleton />}>
-          <AlbumList />
-        </Suspense>
+      <div className="flex justify-between items-center w-full pb-4">
+        <Text variant="title-lg">Top 100 Albums</Text>
+      </div>
+      <Suspense fallback={<AlbumListGridSkeleton />}>
+        <AlbumList />
+      </Suspense>
     </div>
   );
 }
