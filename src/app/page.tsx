@@ -1,5 +1,5 @@
-import { Text } from "@THTS/UI/components/Text";
+import { redirect } from "next/navigation"
 
 export default function Home() {
-  return <Text variant="title-lg">Test Title</Text>;
+  redirect("/album/top-100")
 }
