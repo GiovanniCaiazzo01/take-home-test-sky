@@ -8,6 +8,7 @@ type AlbumEmptyResultProps = {
 const AlbumEmptyResult = ({ title, subTitle }: AlbumEmptyResultProps) => {
   return (
     <div
+      data-testid="album-empty"
       className=" border-2 border-dashed border-gray-400 space-y-3 flex flex-col items-center justify-center col-span-1 sm:col-span-2 md:col-span-4 w-full"
       style={{ height: "240px" }}
     >

@@ -87,6 +87,7 @@ export default function AlbumFilters() {
             Search album
           </label>
           <input
+            data-testid="filter-search"
             id="album-search"
             type="search"
             placeholder="Search album…"
@@ -112,6 +113,7 @@ export default function AlbumFilters() {
             Search artist
           </label>
           <input
+            data-testid="filter-artist"
             id="artist-search"
             type="search"
             placeholder="Search artist…"
