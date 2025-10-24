@@ -14,5 +14,4 @@ export const filterParsers = {
 
 export const searchParamsCache = createSearchParamsCache(filterParsers);
 
-export type ParsedSearchParams = ReturnType<typeof searchParamsCache.parse>;
 export type FilterParsers = inferParserType<typeof filterParsers>;
